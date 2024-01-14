@@ -1,12 +1,10 @@
 //import { useState } from 'react'
-
+import './index.css'
 function App() {
 
 
   return (
-    <>
-      hello this is the wesite where user learn english
-    </>
+    <div className=" font-mono font-bold text-blue-500 text-4xl">hello this is the wesite where user learn english</div>
   )
 }
 
