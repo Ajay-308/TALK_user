@@ -1,18 +1,17 @@
-// import { useState } from 'react'; // Uncomment this line if you're using useState
 import './index.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Import BrowserRouter as Router
-import Login from './compoenents/login'; // Fix the typo in 'compoenents'
-import Home from "./pages/Home"
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './compoenents/login'; // Correct the typo
+import Home from './pages/Home';
+import Register from './compoenents/Register'; // Correct the typo
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/' Component={Login} />
-        <Route path='/home' Component={Home} />
-
+        <Route path="/" element={<Login />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
-
     </Router>
   );
 }

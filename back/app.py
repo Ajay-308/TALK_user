@@ -1,73 +1,117 @@
-from flask import Flask, jsonify, session, redirect, url_for, request
-from authlib.integrations.flask_client import OAuth
+from flask import Flask, jsonify, request, session
+from pymongo import MongoClient
+from urllib.parse import quote_plus
+from flask_jwt_extended import JWTManager, create_access_token
 from flask_cors import CORS
-import os
-from dotenv import load_dotenv
+from flask_pymongo import PyMongo
+import bcrypt
 
-load_dotenv()
 
 app = Flask(__name__)
-CORS(app, resources={r"/google-login": {"origins": "http://localhost:5173"}})
 
-appConf = {
-    "OAuth_cleintIS": os.getenv("CLIENT_ID"),
-    "OAuth_cleintSecret": os.getenv("CLIENT_SECRET"),
-    "OAuth_meta_URL": "https://accounts.google.com/.well-known/openid-configuration",
-    "flask_secret": "6bbaa476-a82c-4ac9-8515-7e852451bf1e",
-    "flask_port": 8080,
-}
+jwt = JWTManager(app)
+CORS(app)
 
-app.secret_key = appConf["flask_secret"]
+# MongoDB connection URI
+username = "gojoxsukuna3"
+password = "AJAY@3008"
+cluster_address = "cluster0.copv7ci.mongodb.net"
+database_name = "Cluster0"
 
-oauth = OAuth(app)
-google = oauth.register(
-    name="google",
-    client_id=appConf["OAuth_cleintIS"],
-    client_secret=appConf["OAuth_cleintSecret"],
-    server_metadata_url=appConf["OAuth_meta_URL"],
-    client_kwargs={"scope": "openid email profile"},
-)
+escaped_username = quote_plus(username)
+escaped_password = quote_plus(password)
+
+app.config[
+    "MONGO_URI"
+] = f"mongodb+srv://{escaped_username}:{escaped_password}@{cluster_address}/{database_name}?retryWrites=true&w=majority"
+
+mongo = PyMongo(app)
+
+app.secret_key = "iS23ZcFaaDjYJE4RIipc7VJ36cpTGK4V"
+app.config["JWT_SECRET_KEY"] = "iS23ZcFaaDjYJE4RIipc7VJ36cpTGK4V"
+
+try:
+    mongo.db.command("ping")
+    print("Pinged your deployment. You successfully connected to MongoDB!")
+except Exception as e:
+    print(e)
 
 
+# here the routes goes
 @app.route("/")
-def hello_world():
-    return "hello world!!"
+def test():
+    return jsonify({"message": "all good"})
 
 
-@app.route("/login")
-def login():
-    return oauth.google.authorize_redirect(
-        redirect_uri=url_for("google_login", _external=True)
-    )
+@app.route("/register", methods=["POST", "GET"])
+def register():
+    if request.method == "POST":
+        allUsers = mongo.db.users
+        user = allUsers.find_one({"email": request.json["email"]})
+        username = allUsers.find_one({"username": request.json["username"]})
+        if user:
+            return jsonify({"message": "user already exists"}), 401
+
+        if username:
+            return jsonify({"message": "username already exists"}), 401
+
+        if request.json["password"] != request.json["cpassword"]:
+            return jsonify(message="Password Not Matching!"), 401
+
+        hashpw = bcrypt.hashpw(
+            request.json["password"].encode("utf-8"), bcrypt.gensalt()
+        )
+
+        hashCpw = bcrypt.hashpw(
+            request.json["cpassword"].encode("utf-8"), bcrypt.gensalt()
+        )
+
+        access_token = create_access_token(identity=request.json["email"])
+
+        allUsers.insert_one(
+            {
+                "email": request.json["email"],
+                "password": hashpw,
+                "cpassword": hashCpw,
+                "username": request.json["username"],
+                "tokens": [{"token": str(access_token)}],
+            }
+        )
+        session["email"] = request.json["email"]
+        return jsonify(token=str(access_token)), 201
+    return jsonify(message="something went wrong"), 401
 
 
-@app.route("/signin-google")
-def signin_google():
-    token = oauth.google.authorize_access_token()
-    session["token"] = token
-    return redirect(url_for("home"))
+@app.route("/login", methods=["POST"])
+def user_login():
+    all_users = mongo.db.users
+    user = all_users.find_one({"email": request.json["email"]})
+
+    if user and bcrypt.checkpw(
+        request.json["password"].encode("utf-8"), user["password"]
+    ):
+        access_token = create_access_token(identity=request.json["email"])
+        user["tokens"].append({"token": str(access_token)})
+
+        # Use update_one to update the document
+        all_users.update_one({"_id": user["_id"]}, {"$set": {"tokens": user["tokens"]}})
+
+        return jsonify(token=str(access_token)), 201
+
+    return jsonify(message="Invalid Username/Password"), 401
 
 
-# New route to handle Google login
-@app.route("/google-login", methods=["POST"])
-def google_login():
-    try:
-        # Get the Google access token from the request
-        access_token = request.json.get("accessToken")
+@app.route("/logoutUser", methods=["POST"])
+def logoutUser():
+    allUsers = mongo.db.users
+    user = allUsers.find_one({"tokens.token": request.json["auth"]})
 
-        # Validate the access token (you may want to use a library for this)
-        # For simplicity, we'll just print the token here
-        print(f"Received Google Access Token: {access_token}")
-
-        # Perform necessary validation and user authentication on the backend
-        # ...
-
-        # If validation is successful, return a success response
-        return jsonify({"success": True}), 200
-    except Exception as e:
-        # Handle errors and return an appropriate response
-        return jsonify({"error": str(e)}), 400
+    if user:
+        user["tokens"] = []
+        allUsers.save(user)
+        return jsonify(message="Logout Successfully!"), 201
+    return jsonify(message="Something went wrong!"), 401
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=appConf["flask_port"], debug=True)
+    app.run(debug=True)
