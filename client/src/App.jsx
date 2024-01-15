@@ -1,11 +1,20 @@
-//import { useState } from 'react'
-import './index.css'
+// import { useState } from 'react'; // Uncomment this line if you're using useState
+import './index.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Import BrowserRouter as Router
+import Login from './compoenents/login'; // Fix the typo in 'compoenents'
+import Home from "./pages/Home"
+
 function App() {
-
-
   return (
-    <div className=" font-mono font-bold text-blue-500 text-4xl">hello this is the wesite where user learn english</div>
-  )
+    <Router>
+      <Routes>
+        <Route path='/' Component={Login} />
+        <Route path='/home' Component={Home} />
+
+      </Routes>
+
+    </Router>
+  );
 }
 
-export default App
+export default App;
