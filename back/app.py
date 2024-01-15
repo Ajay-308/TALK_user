@@ -1,14 +1,17 @@
 from flask import Flask, jsonify, session, redirect, url_for, request
 from authlib.integrations.flask_client import OAuth
 from flask_cors import CORS
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app, resources={r"/google-login": {"origins": "http://localhost:5173"}})
 
 appConf = {
-    "OAuth_cleintIS": "1038763694046-q3vi47e21lb7lrq4cvh10epia1nfdds6.apps.googleusercontent.com",
-    "OAuth_cleintSecret": "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",
+    "OAuth_cleintIS": os.getenv("CLIENT_ID"),
+    "OAuth_cleintSecret": os.getenv("CLIENT_SECRET"),
     "OAuth_meta_URL": "https://accounts.google.com/.well-known/openid-configuration",
     "flask_secret": "6bbaa476-a82c-4ac9-8515-7e852451bf1e",
     "flask_port": 8080,

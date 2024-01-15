@@ -1,7 +1,10 @@
+
 import Logo from "../assets/interview-image-removebg-preview.png"
 import { GoogleLogin } from "react-google-login"
 
 const Login = () => {
+
+
     const handleGoogleLogin = async (response) => {
         try {
             const accessToken = response.accessToken;
@@ -73,16 +76,14 @@ const Login = () => {
 
                     <div className="w-full ml-12 bg-black text-white my-2 rounded-full p-4 mt-4 text-center flex items-center justify-center">
                         <GoogleLogin
+
                             clientId="1038763694046-q3vi47e21lb7lrq4cvh10epia1nfdds6.apps.googleusercontent.com"
                             buttonText="Login with Google"
                             onSuccess={handleGoogleLogin}
                             onFailure={(error) => console.log('Google login failed:', error)}
                             cookiePolicy={'single_host_origin'}
-                            redirectUri="http://localhost:5173"  // Update with your actual frontend URL
                         />
-
                     </div>
-
 
                 </div>
 
