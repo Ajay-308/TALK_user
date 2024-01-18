@@ -11,7 +11,7 @@ export default async function NotesPage() {
   if (!userId) throw Error("userId undefined");
 
   return (
-    <div className="  grid gap-3 text-2xl font-semibold text-white  sm:grid-cols-2 lg:grid-cols-3">
+    <div className="  grid gap-3 text-2xl font-semibold sm:grid-cols-2 lg:grid-cols-3">
       hello
     </div>
   );

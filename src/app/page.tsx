@@ -1,4 +1,4 @@
-import logo from "@/assets/logo-removebg-preview.png";
+import logo from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
 import { auth } from "@clerk/nextjs";
 import Image from "next/image";
