@@ -1,7 +1,11 @@
-import logo from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
 import { auth } from "@clerk/nextjs";
+import first from "../assets/1st-removebg-preview.png";
+import second from "../assets/2nd-removebg-preview.png";
+import thrird from "../assets/3rd-removebg-preview.png";
+import fourth from "../assets/4th-removebg-preview.png";
 import Image from "next/image";
+import { ArrowBigLeft, ArrowLeft, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import Navbar from "./home/Navbar";
@@ -12,23 +16,49 @@ export default function Home() {
   if (userId) redirect("/home");
 
   return (
-    <>
+    <div>
       <Navbar />
-      <main className="flex h-screen flex-col items-center justify-center gap-5">
-        <div className="flex items-center gap-4">
-          <Image src={logo} alt="shera logo" width={100} height={100} />
-          <span className="text-4xl font-extrabold tracking-tight lg:text-5xl">
-            Talk User
-          </span>
+      <section className="mt-12">
+        <div className="flex w-full">
+          <div className="flex w-1/2 flex-col items-center justify-center">
+            <div className="ml-2 mt-8 flex">
+              <div className="text-2xl font-bold">
+                Here We are for you, We care you and your English learn
+              </div>
+            </div>
+            <div className="text-xl font-semibold text-blue-400">
+              {" "}
+              Begin your journey with us
+              <Button className="ml-4 mt-4 transform transition-transform duration-300 ease-out hover:translate-y-1">
+                <Link href="/home">Get Started</Link>
+                <ArrowRight className="w-h ml-2 h-4 w-6 ease-in-out hover:h-6" />
+              </Button>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 grid-rows-2">
+            <Image
+              src={first}
+              alt="first"
+              className="ml-12 h-[16rem] w-[16rem]"
+            />
+            <Image
+              src={second}
+              alt="second"
+              className="ml-8 h-[16rem] w-[16rem]"
+            />
+            <Image
+              src={thrird}
+              alt="second"
+              className="ml-8 h-[16rem] w-[18rem]"
+            />
+            <Image
+              src={fourth}
+              alt="second"
+              className="ml-8 h-[16rem] w-[16rem]"
+            />
+          </div>
         </div>
-        <p className="max-w-prose text-center">
-          Intelligent note-taking app built with OpenAI, Pinecone, Next.js, and
-          authenticated with Clerk.
-        </p>
-        <Button size="lg" asChild>
-          <Link href="/home">Get Started</Link>
-        </Button>
-      </main>
-    </>
+      </section>
+    </div>
   );
 }
