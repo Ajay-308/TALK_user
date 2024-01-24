@@ -26,50 +26,41 @@ const ChatComponent: React.FC = () => {
       console.error("Error sending message:", error);
     }
   };
+  const handleKeyDown = (e: any) => {
+    if (e.key === "Enter") {
+      e.preventDefault(); // Prevent the default behavior of the Enter key
+      handleSendMessage();
+    }
+  };
 
   return (
-    // <div>
-    //   <div>
-    //     <textarea
-    //       rows={10}
-    //       cols={50}
-    //       value={chatHistory}
-    //       readOnly
-    //       style={{ marginBottom: "10px" }}
-    //     />
-    //   </div>
-    //   <div>
-    //     <input
-    //       type="text"
-    //       value={inputMessage}
-    //       onChange={(e) => setInputMessage(e.target.value)}
-    //     />
-    //     <button onClick={handleSendMessage}>Send</button>
-    //   </div>
-    // </div>
     <>
       <Navbar />
       <div className="container-fluid  bg-gradient text-dark mt-5 flex flex-col items-center justify-center">
         <div className="border-warning border-3 h-[3rem] w-[15rem] rounded shadow">
           <h1 className="  mb-8 ml-4 mt-4"> Interview Prep with AI</h1>
         </div>
-        <div className="mt-4">
-          <div>
+        <div className="mt-4 border border-black p-4">
+          <div className="border-black p-2">
             <textarea
-              rows={10}
+              rows={17}
               cols={50}
               value={chatHistory}
               readOnly
-              style={{ marginBottom: "10px" }}
+              className="mb-4 border-black p-2"
             />
           </div>
-          <div>
+          <div className="flex">
             <input
               type="text"
               value={inputMessage}
               onChange={(e) => setInputMessage(e.target.value)}
+              onKeyDown={handleKeyDown}
+              className="mr-2 border border-black p-2"
             />
-            <Button onClick={handleSendMessage}>Send</Button>
+            <Button onClick={handleSendMessage} className="p-2">
+              Send
+            </Button>
           </div>
         </div>
       </div>
