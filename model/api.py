@@ -2,12 +2,16 @@ from flask import Flask, request, jsonify
 import google.generativeai as genai
 from dotenv import load_dotenv
 import os
+from flask import Flask
+from flask_cors import CORS
+from dotenv import load_dotenv
+import os
 
 load_dotenv()  # Load environment variables from .env file
-
 genai.configure(api_key=os.getenv('API_KEY')) 
 
 app = Flask(__name__)
+CORS(app,supports_credentials=True)
 
 model = genai.GenerativeModel(model_name="gemini-pro")  # Create the model instance
 
