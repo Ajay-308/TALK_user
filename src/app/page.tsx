@@ -10,7 +10,6 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import Navbar from "./home/Navbar";
 import { Card } from "@/components/ui/card";
-import { ThemeProvider } from "next-themes";
 
 export default function Home() {
   const { userId } = auth();
@@ -61,7 +60,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <div className="absolute left-[0px] mt-28 h-1 w-full bg-blue-400" />
+      <div className="absolute left-[0px] mt-28 h-1 w-full " />
 
       <section className="mb-8 mt-48 flex justify-center">
         <div className="grid grid-cols-2 grid-rows-2 items-center justify-center gap-4">

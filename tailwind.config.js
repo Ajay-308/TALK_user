@@ -22,6 +22,10 @@ module.exports = {
         ring: "hsl(var(--ring))",
         background: "#0000",
         foreground: "hsl(var(--foreground))",
+        dark: {
+          background: "#000000", // Set to black
+          // Add other dark theme colors if needed
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -36,7 +40,7 @@ module.exports = {
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          foreground: "black",
         },
         accent: {
           DEFAULT: "hsl(var(--accent))",
