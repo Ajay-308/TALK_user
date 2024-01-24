@@ -2,13 +2,14 @@ import { Button } from "@/components/ui/button";
 import { auth } from "@clerk/nextjs";
 import first from "../assets/1st-removebg-preview.png";
 import second from "../assets/2nd-removebg-preview.png";
-import thrird from "../assets/3rd-removebg-preview.png";
+import thrird from "../assets/Screenshot_2024-01-24_125606-removebg-preview.png";
 import fourth from "../assets/4th-removebg-preview.png";
 import Image from "next/image";
-import { ArrowBigLeft, ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import Navbar from "./home/Navbar";
+import { Card } from "@/components/ui/card";
 
 export default function Home() {
   const { userId } = auth();
@@ -49,7 +50,7 @@ export default function Home() {
             <Image
               src={thrird}
               alt="second"
-              className="ml-8 h-[16rem] w-[18rem]"
+              className=" ml-8 h-[16rem] w-[16rem]"
             />
             <Image
               src={fourth}
@@ -57,6 +58,47 @@ export default function Home() {
               className="ml-8 h-[16rem] w-[16rem]"
             />
           </div>
+        </div>
+      </section>
+      <section className="mb-8 mt-48 flex justify-center">
+        <div className="grid grid-cols-2 grid-rows-2 items-center justify-center gap-4">
+          {/* Card 1 */}
+          <Card className="flex h-[20rem] w-[20rem] flex-col items-center border p-4 transition-all duration-300 ease-out hover:scale-110 hover:transform">
+            <div className="flex items-center justify-center">
+              <Image src={first} alt="src" className="h-[12rem] w-[12rem] " />
+            </div>
+            <div className="mt-4 text-center">hello</div>
+            <Button className="mt-2">
+              <Link href="/home">Get Started</Link>
+            </Button>
+          </Card>
+
+          {/* Card 2 */}
+          <Card className="h-[20rem] w-[20rem]">
+            {/* Replace this with the actual content for Card 2 */}
+            Card 2
+            <Button className="mt-2">
+              <Link href="/get-started">Get Started</Link>
+            </Button>
+          </Card>
+
+          {/* Card 3 */}
+          <Card className="h-[20rem] w-[20rem]">
+            {/* Replace this with the actual content for Card 3 */}
+            Card 3
+            <Button className="mt-2">
+              <Link href="/get-started">Get Started</Link>
+            </Button>
+          </Card>
+
+          {/* Card 4 */}
+          <Card className="h-[20rem] w-[20rem]">
+            {/* Replace this with the actual content for Card 4 */}
+            Card 4
+            <Button className="mt-2">
+              <Link href="/get-started">Get Started</Link>
+            </Button>
+          </Card>
         </div>
       </section>
     </div>
