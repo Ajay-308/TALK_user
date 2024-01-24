@@ -10,6 +10,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import Navbar from "./home/Navbar";
 import { Card } from "@/components/ui/card";
+import { ThemeProvider } from "next-themes";
 
 export default function Home() {
   const { userId } = auth();
@@ -60,10 +61,12 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <div className="absolute left-[0px] mt-28 h-1 w-full bg-blue-400" />
+
       <section className="mb-8 mt-48 flex justify-center">
         <div className="grid grid-cols-2 grid-rows-2 items-center justify-center gap-4">
           {/* Card 1 */}
-          <Card className="flex h-[20rem] w-[20rem] flex-col items-center border p-4 transition-all duration-300 ease-out hover:scale-110 hover:transform">
+          <Card className="flex h-[24rem] w-[20rem] flex-col items-center border p-4 transition-all duration-300 ease-out hover:scale-110 hover:transform">
             <div className="flex items-center justify-center">
               <Image src={first} alt="src" className="h-[12rem] w-[12rem] " />
             </div>
@@ -74,29 +77,35 @@ export default function Home() {
           </Card>
 
           {/* Card 2 */}
-          <Card className="h-[20rem] w-[20rem]">
-            {/* Replace this with the actual content for Card 2 */}
-            Card 2
+          <Card className="flex h-[24rem] w-[20rem] flex-col items-center border p-4 transition-all duration-300 ease-out hover:scale-110 hover:transform">
+            <div className="flex items-center justify-center">
+              <Image src={first} alt="src" className="h-[12rem] w-[12rem] " />
+            </div>
+            <div className="mt-4 text-center">hello</div>
             <Button className="mt-2">
-              <Link href="/get-started">Get Started</Link>
+              <Link href="/home">Get Started</Link>
             </Button>
           </Card>
 
           {/* Card 3 */}
-          <Card className="h-[20rem] w-[20rem]">
-            {/* Replace this with the actual content for Card 3 */}
-            Card 3
+          <Card className="flex h-[24rem] w-[20rem] flex-col items-center border p-4 transition-all duration-300 ease-out hover:scale-110 hover:transform">
+            <div className="flex items-center justify-center">
+              <Image src={first} alt="src" className="h-[12rem] w-[12rem] " />
+            </div>
+            <div className="mt-4 text-center">hello</div>
             <Button className="mt-2">
-              <Link href="/get-started">Get Started</Link>
+              <Link href="/home">Get Started</Link>
             </Button>
           </Card>
 
           {/* Card 4 */}
-          <Card className="h-[20rem] w-[20rem]">
-            {/* Replace this with the actual content for Card 4 */}
-            Card 4
+          <Card className="flex h-[24rem] w-[20rem] flex-col items-center border p-4 transition-all duration-300 ease-out hover:scale-110 hover:transform">
+            <div className="flex items-center justify-center">
+              <Image src={first} alt="src" className="h-[12rem] w-[12rem] " />
+            </div>
+            <div className="mt-4 text-center">hello</div>
             <Button className="mt-2">
-              <Link href="/get-started">Get Started</Link>
+              <Link href="/home">Get Started</Link>
             </Button>
           </Card>
         </div>
