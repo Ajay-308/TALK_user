@@ -16,6 +16,9 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        fantasy: ["Cursive", "Comic Sans MS", "fantasy"], // Add fantasy-style fonts
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
