@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import Navbar from "../home/Navbar";
 import { Button } from "@/components/ui/button";
+import { BotIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
 interface ChatMessage {
@@ -98,6 +99,7 @@ const ChatComponent: React.FC = () => {
                   }}
                 >
                   <div>
+                    <BotIcon className="m-1" size={20} />
                     <strong className="m-1">Jarwis</strong>
                   </div>
                   <h4 className="m-1">{msg.jarwis}</h4>
