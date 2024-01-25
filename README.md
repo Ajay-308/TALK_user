@@ -3,7 +3,8 @@ Welcome to Talk_User – your one-stop solution for English learning, personalit
 
 1. English Learning Platform:
 
--> Engage in tailored English courses.
+-> Engage in tailored English courses.\n
+
 -> Real-time practice with our AI Chatbot (ChatGPT API).
 -> Vocabulary builder for effective communication.
 
