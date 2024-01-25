@@ -65,11 +65,11 @@ const ChatComponent: React.FC = () => {
     <>
       <Navbar />
       <div className="container-fluid bg-gradient text-dark flex min-h-screen flex-col items-center justify-center">
-        <h1 className="text-warning font-fantasy mx-4 mb-2 mr-auto text-xl font-bold">
+        <h1 className="text-warning -mt-24 mb-2 mr-auto font-fantasy text-xl font-bold">
           Interview Prep with AI
         </h1>
         <div
-          className="bg-light mb-4 h-[40rem] w-[70rem] overflow-y-scroll rounded border p-3"
+          className="bg-light mb-4 h-[33rem] w-[70rem] overflow-y-scroll rounded border p-3"
           ref={msgBoxRef}
         >
           {chatHistory.map((msg, index) => (
