@@ -32,7 +32,6 @@ export default async function NotesPage() {
               </div>
             </div>
             <div className="text-xl font-semibold text-blue-400">
-              {" "}
               Begin your journey with us
               <Button className="ml-4 mt-4 transform transition-transform duration-300 ease-out hover:translate-y-1">
                 <Link href="/home">Get Started</Link>
