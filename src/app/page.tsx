@@ -65,7 +65,7 @@ export default function Home() {
       <section className="mb-8 mt-48 flex justify-center">
         <div className="grid grid-cols-2 grid-rows-2 items-center justify-center gap-4">
           {/* Card 1 */}
-          <Card className="flex h-[24rem] w-[20rem] flex-col items-center border p-4 transition-all duration-300 ease-out hover:scale-110 hover:transform">
+          <Card className="flex flex-col items-center border p-4 transition-all duration-300 ease-out hover:scale-110 hover:transform  lg:h-[24rem] lg:w-[20rem]">
             <div className="flex items-center justify-center">
               <Image src={first} alt="src" className="h-[12rem] w-[12rem] " />
             </div>
@@ -76,18 +76,18 @@ export default function Home() {
           </Card>
 
           {/* Card 2 */}
-          <Card className="flex h-[24rem] w-[20rem] flex-col items-center border p-4 transition-all duration-300 ease-out hover:scale-110 hover:transform">
+          <Card className="flex flex-col items-center border p-4 transition-all duration-300 ease-out hover:scale-110 hover:transform  lg:h-[24rem] lg:w-[20rem]">
             <div className="flex items-center justify-center">
               <Image src={first} alt="src" className="h-[12rem] w-[12rem] " />
             </div>
-            <div className="mt-4 text-center">role</div>
+            <div className="mt-4 text-center">ResumeTracker</div>
             <Button className="mt-2">
               <Link href="/role">Get Started</Link>
             </Button>
           </Card>
 
           {/* Card 3 */}
-          <Card className="flex h-[24rem] w-[20rem] flex-col items-center border p-4 transition-all duration-300 ease-out hover:scale-110 hover:transform">
+          <Card className="flex flex-col items-center border p-4 transition-all duration-300 ease-out hover:scale-110 hover:transform  lg:h-[24rem] lg:w-[20rem]">
             <div className="flex items-center justify-center">
               <Image src={first} alt="src" className="h-[12rem] w-[12rem] " />
             </div>
@@ -98,7 +98,7 @@ export default function Home() {
           </Card>
 
           {/* Card 4 */}
-          <Card className="flex h-[24rem] w-[20rem] flex-col items-center border p-4 transition-all duration-300 ease-out hover:scale-110 hover:transform">
+          <Card className="flex flex-col items-center border p-4 transition-all duration-300 ease-out hover:scale-110 hover:transform  lg:h-[24rem] lg:w-[20rem]">
             <div className="flex items-center justify-center">
               <Image src={first} alt="src" className="h-[12rem] w-[12rem] " />
             </div>

@@ -50,7 +50,13 @@ export default function Navbar() {
               afterSignOutUrl="/"
               appearance={{
                 baseTheme: theme === "light" ? dark : undefined,
-                elements: { avatarBox: { width: "2.5rem", height: "2.5rem" } },
+                elements: {
+                  avatarBox: {
+                    width: "2.5rem",
+                    height: "2.5rem",
+                    marginLeft: ".7rem",
+                  },
+                },
               }}
             />
             <Button className="ml-4">
