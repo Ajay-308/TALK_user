@@ -101,7 +101,7 @@ export default async function NotesPage() {
           </Card>
 
           {/* Card 4 */}
-          <Card className="flex h-[24rem] w-[20rem] flex-col items-center border p-4 transition-all duration-300 ease-out hover:scale-110 hover:transform">
+          <Card className="flex flex-col items-center border p-4 transition-all duration-300 ease-out hover:scale-110 hover:transform  lg:h-[24rem] lg:w-[20rem]">
             <div className="flex items-center justify-center">
               <Image src={first} alt="src" className="h-[12rem] w-[12rem] " />
             </div>

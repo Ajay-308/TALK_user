@@ -102,9 +102,9 @@ export default function Home() {
             <div className="flex items-center justify-center">
               <Image src={first} alt="src" className="h-[12rem] w-[12rem] " />
             </div>
-            <div className="mt-4 text-center">hello</div>
+            <div className="mt-4 text-center">learn</div>
             <Button className="mt-2">
-              <Link href="/home">Get Started</Link>
+              <Link href="/learn">Get Started</Link>
             </Button>
           </Card>
         </div>
