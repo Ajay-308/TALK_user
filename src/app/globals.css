@@ -49,14 +49,15 @@
   position: absolute;
   width: 25vw;
   height: 25vw;
-  left: 1;
+  left: 3rem;
+  top: 3rem;
   top: 10vh;
 }
 #circle1 {
   position: absolute;
   width: 25vw;
   height: 25vw;
-  background-color: rgb(98, 43, 226);
+  background-color: rgb(70, 70, 255);
   border-radius: 50%;
   filter: blur(20px);
   animation-name: anime2;
@@ -69,7 +70,7 @@
   position: absolute;
   width: 25vw;
   height: 25vw;
-  background: linear-gradient(blueviolet, rgb(119, 0, 255));
+  background: linear-gradient(blue, rgb(70, 70, 255));
   border-radius: 50%;
   filter: blur(30px);
   animation-name: anime1;
@@ -82,7 +83,7 @@
   position: absolute;
   width: 25vw;
   height: 25vw;
-  background-color: rgb(98, 43, 226);
+  background-color: rgb(70, 70, 255);
   border-radius: 50%;
   filter: blur(20px);
   animation-name: anime1;
