@@ -44,7 +44,7 @@ export default function Navbar() {
             </Link>
           </div>
           {/* Toggle button and Get Started button on the right */}
-          <div className="flex items-center">
+          <div className=" flex items-center gap-2">
             <ThemeToggleButton />
             <UserButton
               afterSignOutUrl="/"
@@ -54,7 +54,6 @@ export default function Navbar() {
                   avatarBox: {
                     width: "2.5rem",
                     height: "2.5rem",
-                    marginLeft: ".7rem",
                   },
                 },
               }}
