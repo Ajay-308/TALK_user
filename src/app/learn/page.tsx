@@ -59,7 +59,7 @@ const Learn: React.FC = () => {
   }, [chatHistory]);
 
   return (
-    <>
+    <div className="bg-black">
       <Navbar />
       <div className="container-fluid bg-gradient text-dark flex min-h-screen flex-col items-center justify-center">
         <h1 className="text-warning -mt-24 mb-2 ml-2 mr-auto font-fantasy text-xl font-bold">
@@ -94,11 +94,11 @@ const Learn: React.FC = () => {
                     maxWidth: "55rem",
                   }}
                 >
-                  <div>
-                    <BotIcon className="m-1" size={20} />
+                  <div className="text-white">
+                    <BotIcon className="m-1 text-white" size={20} />
                     <strong className="m-1">Jarwis</strong>
                   </div>
-                  <h4 className="m-1">{msg.jarwis}</h4>
+                  <h4 className="m-1 text-white">{msg.jarwis}</h4>
                 </div>
               </div>
             </div>
@@ -107,19 +107,22 @@ const Learn: React.FC = () => {
         <div className="form-group border-5 flex w-[35rem]">
           <Input
             type="text"
-            className="form-control bg-light flex-grow "
+            className="form-control  flex-grow  bg-gray-800 text-white"
             name="message"
             onKeyDown={handleKeyDown}
             placeholder="Type your message"
             value={inputMessage}
             onChange={(e) => setInputMessage(e.target.value)}
           />
-          <Button className="ml-4" onClick={handleSendMessage}>
+          <Button
+            className="ml-4 bg-white text-black  hover:scale-110 hover:bg-white"
+            onClick={handleSendMessage}
+          >
             Send
           </Button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

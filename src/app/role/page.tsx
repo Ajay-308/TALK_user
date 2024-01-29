@@ -48,13 +48,16 @@ export default function ResumeTracker() {
   };
 
   return (
-    <>
+    <div className="h-[46rem] bg-black text-white ">
       <Navbar />
-      <div className="container mx-auto p-4">
+      <div className="container mx-auto bg-black  p-4">
         <h1 className="mb-4 text-2xl font-bold">Resume Evaluation</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label htmlFor="inputText" className="mb-1 block font-fantasy">
+            <label
+              htmlFor="inputText"
+              className="mb-1 block font-fantasy text-white"
+            >
               Input job discription:
             </label>
             <input
@@ -62,19 +65,22 @@ export default function ResumeTracker() {
               id="inputText"
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
-              className="w-full rounded-md border px-3 py-2"
+              className="w-full rounded-md border bg-gray-800 px-3 py-2"
               required
             />
           </div>
           <div>
-            <label htmlFor="resumeFile" className="mb-1 block font-fantasy">
+            <label
+              htmlFor="resumeFile"
+              className="mb-1 block font-fantasy text-white"
+            >
               Upload Resume (PDF):
             </label>
             <Input
               type="file"
               id="resumeFile"
               onChange={(e) => setResumeFile(e.target.files?.[0] || null)}
-              className="rounded-md border"
+              className="rounded-md border bg-gray-800 text-white"
               accept=".pdf"
               required
             />
@@ -87,10 +93,10 @@ export default function ResumeTracker() {
           </Button>
         </form>
         {loading && <div className="mt-4 text-center ">Loading...</div>}
-        <div id="result" className="mt-8">
+        <div id="result" className="mt-8 bg-black">
           {strength && (
             <>
-              <h2>Result:</h2>
+              <h2 className="font-bold text-white ">Result:</h2>
               <p>
                 <strong>Strength:</strong> {strength}
               </p>
@@ -101,6 +107,6 @@ export default function ResumeTracker() {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 }

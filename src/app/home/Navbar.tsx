@@ -1,21 +1,12 @@
-"use client";
-
 import logo from "@/assets/logo.png";
-import ThemeToggleButton from "@/components/ThemeToggleButton";
 import { Button } from "@/components/ui/button";
 import { UserButton } from "@clerk/nextjs";
-import { dark } from "@clerk/themes";
-import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-
 export default function Navbar() {
-  const { theme } = useTheme();
-
   return (
     <>
-      <div className="p-2 shadow">
+      <div className=" bg-black pt-2 text-white shadow">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           {/* Logo and Talk User on the left */}
           <div className="flex items-center">
@@ -45,11 +36,9 @@ export default function Navbar() {
           </div>
           {/* Toggle button and Get Started button on the right */}
           <div className=" flex items-center gap-2">
-            <ThemeToggleButton />
             <UserButton
               afterSignOutUrl="/"
               appearance={{
-                baseTheme: theme === "light" ? dark : undefined,
                 elements: {
                   avatarBox: {
                     width: "2.5rem",
@@ -58,7 +47,7 @@ export default function Navbar() {
                 },
               }}
             />
-            <Button className="ml-4">
+            <Button className="ml-4 bg-white text-black  hover:scale-110 hover:bg-white">
               <Link href="/home">Get Started</Link>
             </Button>
           </div>

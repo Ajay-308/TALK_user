@@ -63,7 +63,7 @@ const ChatComponent: React.FC = () => {
   }, [chatHistory]);
 
   return (
-    <>
+    <div className="bg-black">
       <Navbar />
       <div className="container-fluid bg-gradient text-dark flex min-h-screen flex-col items-center justify-center">
         <h1 className="text-warning -mt-24 mb-2 mr-auto font-fantasy text-xl font-bold">
@@ -98,11 +98,11 @@ const ChatComponent: React.FC = () => {
                     maxWidth: "55rem",
                   }}
                 >
-                  <div>
+                  <div className="text-white">
                     <BotIcon className="m-1" size={20} />
                     <strong className="m-1">Jarwis</strong>
                   </div>
-                  <h4 className="m-1">{msg.jarwis}</h4>
+                  <h4 className="m-1 text-white">{msg.jarwis}</h4>
                 </div>
               </div>
             </div>
@@ -123,7 +123,7 @@ const ChatComponent: React.FC = () => {
           </Button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

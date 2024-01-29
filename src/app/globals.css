@@ -5,7 +5,7 @@
 @layer base {
   :root {
     --background: black;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: black;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -34,36 +34,6 @@
 
     --radius: 0.5rem;
   }
-
-  .dark {
-    --background: 20 14.3% 4.1%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 0%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-  }
 }
 
 @layer base {
@@ -75,50 +45,46 @@
   }
 }
 
-.hover\:custom-scale:hover {
-  transform: scale(1.4); /* 140% scaling on hover */
-}
-
-#circle-shape{
+#circle-shape {
   position: absolute;
   width: 25vw;
   height: 25vw;
   left: 1;
   top: 10vh;
 }
-#circle1{
+#circle1 {
   position: absolute;
   width: 25vw;
   height: 25vw;
   background-color: rgb(98, 43, 226);
   border-radius: 50%;
-  filter: blur(20px) ;
+  filter: blur(20px);
   animation-name: anime2;
   animation-duration: 5s;
-  animation-timing-function:var(--accent);
+  animation-timing-function: var(--accent);
   animation-iteration-count: infinite;
-  animation-direction:alternate-reverse;
+  animation-direction: alternate-reverse;
 }
-#circle2{
+#circle2 {
   position: absolute;
   width: 25vw;
   height: 25vw;
   background: linear-gradient(blueviolet, rgb(119, 0, 255));
   border-radius: 50%;
-  filter: blur(30px) ;
+  filter: blur(30px);
   animation-name: anime1;
   animation-duration: 5s;
-  animation-timing-function:var(--accent);
+  animation-timing-function: var(--accent);
   animation-iteration-count: infinite;
-  animation-direction:alternate-reverse;
+  animation-direction: alternate-reverse;
 }
-#circle3{
+#circle3 {
   position: absolute;
   width: 25vw;
   height: 25vw;
   background-color: rgb(98, 43, 226);
   border-radius: 50%;
-  filter: blur(20px) ;
+  filter: blur(20px);
   animation-name: anime1;
   animation-duration: 3s;
   animation-timing-function: linear;
@@ -126,16 +92,18 @@
   animation-direction: alternate;
 }
 @keyframes anime1 {
-  from{
+  from {
     transform: translate(15%, -10%);
-  }to{
+  }
+  to {
     transform: translate(0%, 10%);
   }
 }
 @keyframes anime2 {
-  from{
+  from {
     transform: translate(55%, -3%);
-  }to{
+  }
+  to {
     transform: translate(-20%, 20%);
   }
 }
