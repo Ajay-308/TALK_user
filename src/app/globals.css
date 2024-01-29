@@ -78,3 +78,64 @@
 .hover\:custom-scale:hover {
   transform: scale(1.4); /* 140% scaling on hover */
 }
+
+#circle-shape{
+  position: absolute;
+  width: 25vw;
+  height: 25vw;
+  left: 1;
+  top: 10vh;
+}
+#circle1{
+  position: absolute;
+  width: 25vw;
+  height: 25vw;
+  background-color: rgb(98, 43, 226);
+  border-radius: 50%;
+  filter: blur(20px) ;
+  animation-name: anime2;
+  animation-duration: 5s;
+  animation-timing-function:var(--accent);
+  animation-iteration-count: infinite;
+  animation-direction:alternate-reverse;
+}
+#circle2{
+  position: absolute;
+  width: 25vw;
+  height: 25vw;
+  background: linear-gradient(blueviolet, rgb(119, 0, 255));
+  border-radius: 50%;
+  filter: blur(30px) ;
+  animation-name: anime1;
+  animation-duration: 5s;
+  animation-timing-function:var(--accent);
+  animation-iteration-count: infinite;
+  animation-direction:alternate-reverse;
+}
+#circle3{
+  position: absolute;
+  width: 25vw;
+  height: 25vw;
+  background-color: rgb(98, 43, 226);
+  border-radius: 50%;
+  filter: blur(20px) ;
+  animation-name: anime1;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+@keyframes anime1 {
+  from{
+    transform: translate(15%, -10%);
+  }to{
+    transform: translate(0%, 10%);
+  }
+}
+@keyframes anime2 {
+  from{
+    transform: translate(55%, -3%);
+  }to{
+    transform: translate(-20%, 20%);
+  }
+}

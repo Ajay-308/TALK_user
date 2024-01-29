@@ -4,6 +4,7 @@ import first from "../assets/1st-removebg-preview.png";
 import second from "../assets/2nd-removebg-preview.png";
 import thrird from "../assets/Screenshot_2024-01-24_125606-removebg-preview.png";
 import fourth from "../assets/4th-removebg-preview.png";
+// import LocomotiveScroll from 'locomotive-scroll';
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -19,24 +20,33 @@ export default function Home() {
   return (
     <div>
       <Navbar />
-      <section className="mt-12">
-        <div className="flex w-full">
-          <div className="flex w-1/2 flex-col items-center justify-center">
+      <section className="grid place-content-center h-screen w-full">
+        <div id="circle-shape">
+                <div id="circle1"></div>
+                <div id="circle2"></div>
+                <div id="circle3"></div>
+              </div>
+        <div className="flex w-">
+          <div className="flex flex-col items-center justify-center">
             <div className="ml-2 mt-8 flex">
-              <div className="text-2xl font-bold">
+              <div className="text-xl font-bold ">
                 Here We are for you, We care you and your English learn
               </div>
             </div>
-            <div className="text-xl font-semibold text-blue-400">
+            <div className="text-5xl mt-2 font-bold ">
+                Unlock <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-500">Growth</span> with Talk User
+              </div>
+            <div className="text-xl mt-2 font-semibold">
               {" "}
               Begin your journey with us
-              <Button className="ml-4 mt-4 transform transition-transform duration-300 ease-out hover:translate-y-1">
-                <Link href="/home">Get Started</Link>
+              
+            </div>
+            <Button className="ml-4 mt-2 transform transition-transform duration-300 ease-out hover:translate-y-1 rounded-full bg-gradient-to-r from-purple-400 to-blue-700">
+                <Link className="font-bold" href="/home">Get Started</Link>
                 <ArrowRight className="w-h ml-2 h-4 w-6 ease-in-out hover:h-6" />
               </Button>
-            </div>
           </div>
-          <div className="grid grid-cols-2 grid-rows-2">
+          {/* <div className="grid grid-cols-2 grid-rows-2">
             <Image
               src={first}
               alt="first"
@@ -57,7 +67,7 @@ export default function Home() {
               alt="second"
               className="ml-8 h-[16rem] w-[16rem]"
             />
-          </div>
+          </div> */}
         </div>
       </section>
       <div className="absolute left-[0px] mt-28 h-1 w-full " />
@@ -70,7 +80,7 @@ export default function Home() {
               <Image src={first} alt="src" className="h-[12rem] w-[12rem] " />
             </div>
             <div className="mt-4 text-center">hello</div>
-            <Button className="mt-2">
+            <Button className="mt-2 bg-gradient-to-r from-purple-400 to-blue-300">
               <Link href="/home">Get Started</Link>
             </Button>
           </Card>
@@ -81,7 +91,7 @@ export default function Home() {
               <Image src={first} alt="src" className="h-[12rem] w-[12rem] " />
             </div>
             <div className="mt-4 text-center">ResumeTracker</div>
-            <Button className="mt-2">
+            <Button className="mt-2 bg-gradient-to-r from-purple-400 to-blue-300">
               <Link href="/role">Get Started</Link>
             </Button>
           </Card>
@@ -92,7 +102,7 @@ export default function Home() {
               <Image src={first} alt="src" className="h-[12rem] w-[12rem] " />
             </div>
             <div className="mt-4 text-center">interview</div>
-            <Button className="mt-2">
+            <Button className="mt-2 bg-gradient-to-r from-purple-400 to-blue-300">
               <Link href="/interview">Get Started</Link>
             </Button>
           </Card>
@@ -103,7 +113,7 @@ export default function Home() {
               <Image src={first} alt="src" className="h-[12rem] w-[12rem] " />
             </div>
             <div className="mt-4 text-center">learn</div>
-            <Button className="mt-2">
+            <Button className="mt-2 bg-gradient-to-r from-purple-400 to-blue-300">
               <Link href="/learn">Get Started</Link>
             </Button>
           </Card>
