@@ -2,7 +2,7 @@ import { auth } from "@clerk/nextjs";
 import { Metadata } from "next";
 
 import { Button } from "@/components/ui/button";
-import first from "../../assets/1st-removebg-preview.png";
+import first from "../../assets/job-interview.gif";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
