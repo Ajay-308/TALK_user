@@ -4,9 +4,9 @@ import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import Navbar from "../home/Navbar";
 import { Button } from "@/components/ui/button";
-import { BotIcon } from "lucide-react";
+import { BotIcon, MicIcon, SpeakerIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
-
+import { HiSpeakerWave, HiMiniSpeakerXMark } from "react-icons/hi2";
 interface ChatMessage {
   user: string;
   jarwis: string;
@@ -14,6 +14,7 @@ interface ChatMessage {
 
 const ChatComponent: React.FC = () => {
   const [inputMessage, setInputMessage] = useState<string>("");
+  const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const [chatHistory, setChatHistory] = useState<ChatMessage[]>(() => {
     // local storage se history leke storedchathistory me daal lega
     const storedChatHistory = localStorage.getItem("chatHistory");
@@ -62,6 +63,41 @@ const ChatComponent: React.FC = () => {
     }
   }, [chatHistory]);
 
+  //text to speech
+
+  const speack = async (text: string) => {
+    const url = "https://large-text-to-speech.p.rapidapi.com/tts";
+    const options = {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        "X-RapidAPI-Key": "48891c94dbmshe8bc4607f3b596bp115bbejsndf496c5fc2d6",
+        "X-RapidAPI-Host": "large-text-to-speech.p.rapidapi.com",
+      },
+      body: JSON.stringify({
+        text: text,
+      }),
+    };
+
+    try {
+      const response = await fetch(url, options);
+      const result = await response.json();
+
+      if (result.status === "success") {
+        setAudioUrl(result.result.audio_url);
+      }
+      console.log(result);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    if (audioUrl) {
+      const audio = new Audio(audioUrl);
+      audio.play();
+    }
+  }, [audioUrl]);
   return (
     <div className="bg-black">
       <Navbar />
@@ -103,6 +139,11 @@ const ChatComponent: React.FC = () => {
                     <strong className="m-1">Jarwis</strong>
                   </div>
                   <h4 className="m-1 text-white">{msg.jarwis}</h4>
+                  <HiSpeakerWave
+                    className="m-1 font-bold text-white"
+                    size={20}
+                    onClick={() => speack(msg.jarwis)}
+                  />
                 </div>
               </div>
             </div>
@@ -121,6 +162,11 @@ const ChatComponent: React.FC = () => {
           <Button className="ml-4" onClick={handleSendMessage}>
             Send
           </Button>
+          {/* <MicIcon
+            className="ml-4 text-white"
+            size={20}
+            onClick={() => traslate(inputMessage)}
+          /> */}
         </div>
       </div>
     </div>
