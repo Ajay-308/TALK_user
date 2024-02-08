@@ -66,23 +66,26 @@ const ChatComponent: React.FC = () => {
   //text to speech
 
   const speack = async (text: string) => {
-    const url = "https://large-text-to-speech.p.rapidapi.com/tts";
+    const url = "https://cloudlabs-text-to-speech.p.rapidapi.com/synthesize";
     const options = {
       method: "POST",
       headers: {
-        "content-type": "application/json",
+        "content-type": "application/x-www-form-urlencoded",
         "X-RapidAPI-Key": "48891c94dbmshe8bc4607f3b596bp115bbejsndf496c5fc2d6",
-        "X-RapidAPI-Host": "large-text-to-speech.p.rapidapi.com",
+        "X-RapidAPI-Host": "cloudlabs-text-to-speech.p.rapidapi.com",
       },
-      body: JSON.stringify({
+      body: new URLSearchParams({
+        voice_code: "en-US-1",
         text: text,
+        speed: "1.00",
+        pitch: "1.00",
+        output_type: "audio_url",
       }),
     };
 
     try {
       const response = await fetch(url, options);
       const result = await response.json();
-
       if (result.status === "success") {
         setAudioUrl(result.result.audio_url);
       }
