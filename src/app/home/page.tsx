@@ -24,7 +24,7 @@ export default async function NotesPage() {
 
   return (
     <>
-      <section className="grid h-screen w-full place-content-center bg-black">
+      <section className="grid h-screen w-[140vh] place-content-center bg-black lg:w-screen xl:w-screen">
         <div id="circle-shape">
           <div id="circle1"></div>
           <div id="circle2"></div>
@@ -57,7 +57,7 @@ export default async function NotesPage() {
           </div>
         </div>
       </section>
-      <section className="flex justify-center bg-black font-fantasy text-2xl text-white">
+      <section className="flex w-[140vh] justify-center bg-black font-fantasy text-2xl text-white lg:w-screen xl:w-screen">
         <div className="mt-48 grid grid-cols-2 grid-rows-2 items-center justify-center gap-4 bg-black">
           {/* Card 1 */}
           <Card className="flex flex-col items-center border bg-black p-4 text-white   lg:h-[24rem] lg:w-[20rem]">
@@ -124,7 +124,7 @@ export default async function NotesPage() {
           </Card>
         </div>
       </section>
-      <section className="flex h-[20rem] justify-center bg-black text-white"></section>
+      <section className="flex h-[20rem] w-[140vh] justify-center bg-black text-white lg:w-screen xl:w-screen"></section>
     </>
   );
 }

@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function Navbar() {
   return (
     <>
-      <div className="bg-black pt-2 text-2xl text-white shadow">
+      <div className="w-[140vh] bg-black pt-2 text-2xl text-white shadow lg:w-screen xl:w-screen">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           {/* Logo and Talk User on the left */}
           <div className="flex items-center">
@@ -38,14 +38,13 @@ export default function Navbar() {
                   avatarBox: {
                     width: "2.7rem",
                     height: "2.7rem",
-                    marginRight: "2rem",
                   },
                 },
               }}
             />
           </div>
           <div>
-            <Button className="bg-white text-black hover:scale-110 hover:bg-white">
+            <Button className=" ml-12 bg-white text-black hover:scale-110 hover:bg-white">
               <Link href="/home">Get Started</Link>
             </Button>
           </div>
