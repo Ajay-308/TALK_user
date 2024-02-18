@@ -48,7 +48,7 @@ export default function ResumeTracker() {
   };
 
   return (
-    <div className="h-[46rem] bg-black text-white ">
+    <div className="h-screen bg-black text-white ">
       <Navbar />
       <div className="container mx-auto bg-black  p-4">
         <h1 className="mb-4 text-2xl font-bold">Resume Evaluation</h1>

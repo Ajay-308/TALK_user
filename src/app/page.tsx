@@ -11,6 +11,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import Navbar from "./home/Navbar";
 import { Card } from "@/components/ui/card";
+import Footer from "./home/footer";
 
 export default function Home() {
   const { userId } = auth();
@@ -54,8 +55,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="mb-8  flex justify-center bg-black text-white">
-        <div className="mt-48 grid grid-cols-2 grid-rows-2 items-center justify-center gap-4 bg-black">
+      <section className="flex justify-center bg-black text-white">
+        <div className="mt-24 grid grid-cols-2 grid-rows-2 items-center justify-center gap-4 bg-black">
           {/* Card 1 */}
           <Card className="flex flex-col items-center border bg-black p-4 text-white   lg:h-[24rem] lg:w-[20rem]">
             <div className="flex items-center justify-center">
@@ -119,6 +120,12 @@ export default function Home() {
               <ArrowRight className="w-h ml-2 h-4 w-6 ease-in-out hover:h-6" />
             </Button>
           </Card>
+        </div>
+      </section>
+      <section className="h-[10rem] w-screen bg-black" />
+      <section className=" h-[20rem] w-screen bg-black text-white">
+        <div className="">
+          <Footer />
         </div>
       </section>
     </div>

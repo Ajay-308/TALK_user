@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function Navbar() {
   return (
     <>
-      <div className=" bg-black pt-2  text-white shadow">
+      <div className="bg-black pt-2 text-2xl text-white shadow">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           {/* Logo and Talk User on the left */}
           <div className="flex items-center">
@@ -14,15 +14,10 @@ export default function Navbar() {
               <Image src={logo} alt="shera logo" className="mr-4 h-10 w-10" />
               <span className="font-bold">Talk User</span>
             </Link>
-            {/* Other links if any */}
           </div>
-          {/* Center aligned links */}
           <div className="flex flex-grow justify-center">
             <Link href="/docs" className="mx-4 font-fantasy">
               <span>Docs</span>
-            </Link>
-            <Link href="/blog" className="mx-4 font-fantasy">
-              <span>Blog</span>
             </Link>
             <Link href="/features" className="mx-4 font-fantasy">
               <span>Features</span>
@@ -35,19 +30,22 @@ export default function Navbar() {
             </Link>
           </div>
           {/* Toggle button and Get Started button on the right */}
-          <div className=" flex items-center gap-2">
+          <div className="flex items-center gap-2">
             <UserButton
               afterSignOutUrl="/"
               appearance={{
                 elements: {
                   avatarBox: {
-                    width: "2.5rem",
-                    height: "2.5rem",
+                    width: "2.7rem",
+                    height: "2.7rem",
+                    marginRight: "2rem",
                   },
                 },
               }}
             />
-            <Button className="ml-4 bg-white text-black  hover:scale-110 hover:bg-white">
+          </div>
+          <div>
+            <Button className="bg-white text-black hover:scale-110 hover:bg-white">
               <Link href="/home">Get Started</Link>
             </Button>
           </div>
