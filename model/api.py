@@ -1,5 +1,9 @@
 from flask import Flask, request, jsonify
 import google.generativeai as genai
+import base64
+import io
+from PIL import Image
+import pdf2image
 from dotenv import load_dotenv
 import os
 from flask import Flask
@@ -14,6 +18,30 @@ app = Flask(__name__)
 CORS(app,supports_credentials=True)
 
 model = genai.GenerativeModel(model_name="gemini-pro")  # Create the model instance
+
+def get_gemini_response(input_text, pdf_content, prompt):
+    model = genai.GenerativeModel('gemini-pro-vision')
+    response = model.generate_content([input_text, pdf_content[0], prompt])
+    return response.text
+
+def input_pdf_setup(uploaded_file):
+    if uploaded_file:
+        images = pdf2image.convert_from_bytes(uploaded_file.read())
+        first_page = images[0]
+
+        img_byte_arr = io.BytesIO()
+        first_page.save(img_byte_arr, format='JPEG')
+        img_byte_arr = img_byte_arr.getvalue()
+
+        pdf_parts = [
+            {
+                "mime_type": "image/jpeg",
+                "data": base64.b64encode(img_byte_arr).decode()
+            }
+        ]
+        return pdf_parts
+    else:
+        raise FileNotFoundError("No file uploaded")
 
 chat = model.start_chat(history=[
   {
@@ -41,6 +69,16 @@ chat = model.start_chat(history=[
   #   "parts": ["Excellent choice! Machine learning roles at Google are highly sought after, and I'm excited to help you prepare for your interview.\n\nTo begin, let's focus on a common question that interviewers often ask candidates for machine learning positions:\n\n\"Could you explain the concept of overfitting and underfitting in machine learning, and how do you address these issues in your work?\"\n\nTake a moment to think about your answer. Once you're ready, feel free to share your thoughts, and I'll provide feedback and additional insights.\n\nRemember, the key is to demonstrate your understanding of these concepts and showcase your ability to apply them practically in your machine learning projects.\n\nI'm here to guide you through this mock interview and help you refine your responses to make a strong impression on your potential employer. Let's get started!"]
   # },
 ])
+chat2 = model.start_chat(history=[
+  {
+    "role": "user",
+    "parts": ["Certainly! here is jarwis my english is not good so i need your help to improve my english and i am preparing for an job interview where english is needed to talk , and to crack interview i need to improve my english so please help me to improve my spoken english"]
+  },
+  {
+    "role": "model",
+    "parts": ["Jarwis, an AI English instructor, is here to assist you in improving your English skills. Begin the conversation by introducing yourself as Jarwis, the AI English instructor. Politely engage with the user, inquire about their details, and await their response. Provide feedback and corrections to improve their English proficiency. Use concise responses, keeping them under 100 words. Prompt the user with examples they won't forget, such as stories about their loved ones. Help them understand where their English may be incorrect and guide them towards correct usage in subsequent prompts. Continue the conversation in a conversational and supportive tone, guiding the user there a comprehensive English Learning experience."]
+   },
+])
 
 @app.route("/chat", methods=["POST"])
 def chat_handler():  # Rename the function to avoid conflict
@@ -52,6 +90,38 @@ def chat_handler():  # Rename the function to avoid conflict
         full_response += chunk.text
 
     return jsonify({"message": full_response})
+
+@app.route("/role", methods=["POST"])
+def role_handler():  # Rename the function to avoid conflict
+    user_message = request.get_json()
+
+    response = chat2.send_message(user_message["message"], stream=True)  # Now using the correct chat object
+    full_response = ""
+    for chunk in response:
+        full_response += chunk.text
+
+    return jsonify({"message": full_response})
+
+@app.route('/process', methods=['POST'])
+def process():
+    input_text = request.form.get('input_text')
+    uploaded_file = request.files.get('uploaded_file')
+
+    if not (input_text and uploaded_file):
+        return jsonify({"error": "Invalid data format. Make sure to provide 'input_text' and 'uploaded_file'."}), 400
+
+    pdf_content = input_pdf_setup(uploaded_file)
+    input_prompt1 = """
+    I hope this message finds you well. As an experienced Technical Human Resource Manager, your expertise is needed to evaluate a candidate's profile against a specific job description. Your task is to provide a professional assessment of whether the candidate's profile aligns with the role, highlighting their strengths and weaknesses in relation to the specified job requirements. Please organize your evaluation in a structured manner using bullet points, ensuring the text does not exceed 150 words.
+    """
+    input_prompt2 = """
+    You are an skilled ATS (Applicant Tracking System) scanner with a deep understanding of ATS functionality and NLP For this task, 
+    your task is to evaluate the resume against the provided job description. give me the percentage of match with  job description . First the output should come in percentage and then keyword-present , than that word if which present in resume this resume should to crack any job and then  last final thoughts"""
+
+    strength = get_gemini_response(input_text, pdf_content, input_prompt1)
+    ats_score = get_gemini_response(input_text, pdf_content, input_prompt2)
+    
+    return jsonify({"strength": strength, "ats_score": ats_score})
 
 if __name__ == "__main__":
     app.run(debug=True)
