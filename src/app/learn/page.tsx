@@ -6,13 +6,14 @@ import Navbar from "../home/Navbar";
 import { Button } from "@/components/ui/button";
 import { BotIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
-
+import { HiSpeakerWave, HiMiniSpeakerXMark } from "react-icons/hi2";
 interface ChatMessage {
   user: string;
   jarwis: string;
 }
 const Learn: React.FC = () => {
   const [inputMessage, setInputMessage] = useState<string>("");
+  const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const [chatHistory, setChatHistory] = useState<ChatMessage[]>(() => {
     const storedChatHistory = localStorage.getItem("learnchatHistory");
     return storedChatHistory ? JSON.parse(storedChatHistory) : [];
@@ -58,6 +59,55 @@ const Learn: React.FC = () => {
     }
   }, [chatHistory]);
 
+  //text to speech
+
+  const speak = async (text: string) => {
+    const url = "https://joj-text-to-speech.p.rapidapi.com/";
+    const options = {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        "X-RapidAPI-Key": "e52465886amsh8c5f506411e78aap1a949ajsn8f5abf05fd02",
+        "X-RapidAPI-Host": "joj-text-to-speech.p.rapidapi.com",
+      },
+      body: JSON.stringify({
+        input: {
+          text: text,
+        },
+        voice: {
+          languageCode: "en-US",
+          name: "en-US-News-L",
+          ssmlGender: "FEMALE",
+        },
+        audioConfig: {
+          audioEncoding: "MP3",
+        },
+      }),
+    };
+
+    try {
+      const response = await fetch(url, options);
+      const result = await response.json(); // Assuming the response is JSON
+      console.log(result);
+
+      // Check if the response contains an audio URL
+      if (result && result.audioContent) {
+        setAudioUrl(`data:audio/mp3;base64,${result.audioContent}`);
+      } else {
+        console.error("Failed to get audio content from the API response.");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    if (audioUrl) {
+      const audio = new Audio(audioUrl);
+      audio.play();
+    }
+  }, [audioUrl]);
+
   return (
     <div className="bg-black">
       <Navbar />
@@ -99,6 +149,11 @@ const Learn: React.FC = () => {
                     <strong className="m-1">Jarwis</strong>
                   </div>
                   <h4 className="m-1 text-white">{msg.jarwis}</h4>
+                  <HiSpeakerWave
+                    className="m-1 font-bold text-white"
+                    size={20}
+                    onClick={() => speak(msg.jarwis)}
+                  />
                 </div>
               </div>
             </div>
