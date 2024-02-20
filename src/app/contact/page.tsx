@@ -25,7 +25,7 @@ const ContactForm = () => {
     <>
       <Navbar />
 
-      <section className="contact h-[60rem] bg-black" id="contact">
+      <section className="contact -mt-[10rem] h-[55rem] bg-black" id="contact">
         <div
           className={`visme_d ${
             isLoading
