@@ -19,12 +19,6 @@ export default function Navbar() {
             <Link href="/docs" className="mx-4 font-fantasy">
               <span>Docs</span>
             </Link>
-            <Link href="/features" className="mx-4 font-fantasy">
-              <span>Features</span>
-            </Link>
-            <Link href="/careers" className="mx-4 font-fantasy">
-              <span>Careers</span>
-            </Link>
             <Link href="/contact" className="mx-4 font-fantasy">
               <span>Contact Us</span>
             </Link>
