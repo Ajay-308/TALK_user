@@ -85,6 +85,7 @@ const ChatComponent: React.FC = () => {
         },
         audioConfig: {
           audioEncoding: "MP3",
+          speakingRate: 1.25,
         },
       }),
     };
