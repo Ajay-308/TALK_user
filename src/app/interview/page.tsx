@@ -92,7 +92,7 @@ const ChatComponent: React.FC = () => {
 
     try {
       const response = await fetch(url, options);
-      const result = await response.json(); // Assuming the response is JSON
+      const result = await response.json(); // for response in json
       console.log(result);
 
       // Check if the response contains an audio URL
@@ -116,7 +116,7 @@ const ChatComponent: React.FC = () => {
     <div className="bg-black">
       <Navbar />
       <div className="container-fluid bg-gradient text-dark flex min-h-screen flex-col items-center justify-center">
-        <h1 className="text-warning -mt-24 mb-2 mr-auto font-fantasy text-xl font-bold">
+        <h1 className="text-warning -mt-24 mb-2 ml-32 mr-auto font-fantasy text-xl font-bold text-white">
           Interview Prep with AI
         </h1>
         <div

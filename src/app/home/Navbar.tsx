@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function Navbar() {
   return (
     <>
-      <div className="w-[140vh] bg-black pt-2 text-2xl text-white shadow lg:w-screen xl:w-screen">
+      <div className="w-[135vh] bg-black pt-2 text-xl text-white shadow lg:w-screen xl:w-screen">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           {/* Logo and Talk User on the left */}
           <div className="flex items-center">
@@ -16,10 +16,10 @@ export default function Navbar() {
             </Link>
           </div>
           <div className="flex flex-grow justify-center">
-            <Link href="/docs" className="mx-4 font-fantasy">
+            <Link href="/docs" className="mx-6 font-fantasy">
               <span>Docs</span>
             </Link>
-            <Link href="/contact" className="mx-4 font-fantasy">
+            <Link href="/contact" className="mx-6 font-fantasy">
               <span>Contact Us</span>
             </Link>
           </div>
