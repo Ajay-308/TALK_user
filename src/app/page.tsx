@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <div>
       <Navbar />
-      <section className="grid h-screen w-full place-content-center bg-black">
+      <section className="grid h-screen  w-[140vh]  place-content-center bg-black  lg:w-screen xl:w-screen">
         <div id="circle-shape">
           <div id="circle1"></div>
           <div id="circle2"></div>
@@ -55,7 +55,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="flex justify-center bg-black text-white">
+      <section className="flex w-[140vh] place-content-center  justify-center bg-black  text-white lg:w-screen xl:w-screen">
         <div className="mt-24 grid grid-cols-2 grid-rows-2 items-center justify-center gap-4 bg-black">
           {/* Card 1 */}
           <Card className="flex flex-col items-center border bg-black p-4 text-white   lg:h-[24rem] lg:w-[20rem]">
