@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { BotIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { HiSpeakerWave, HiMiniSpeakerXMark } from "react-icons/hi2";
+import { MicIcon } from "lucide-react";
 interface ChatMessage {
   user: string;
   jarwis: string;
@@ -19,6 +20,8 @@ const Learn: React.FC = () => {
     return storedChatHistory ? JSON.parse(storedChatHistory) : [];
   });
   const msgBoxRef = useRef<HTMLDivElement>(null);
+  const [voiceData, setVoiceData] = useState("");
+  const [error, setError] = useState("");
 
   const handleSendMessage = async () => {
     try {
@@ -108,6 +111,45 @@ const Learn: React.FC = () => {
     }
   }, [audioUrl]);
 
+  // listen
+
+  const handleListen = async () => {
+    try {
+      const recognition = new window.webkitSpeechRecognition();
+      recognition.lang = "en-US";
+      recognition.start();
+
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        setVoiceData(transcript);
+        setInputMessage(transcript); // Set voice data to the input message
+        recognition.stop();
+
+        // Call handleSendMessage to send the voice data as a message
+        handleSendMessage();
+      };
+
+      recognition.onerror = (event) => {
+        setError(`Speech recognition error: ${event.error}`);
+        recognition.stop();
+      };
+    } catch (error) {
+      setError(`Error: ${error}`);
+    }
+    handleSubmit();
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.post("http://localhost:5000/listen", {
+        message: voiceData,
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.error(`Error submitting voice data: ${error}`);
+    }
+  };
+
   return (
     <div className="bg-black">
       <Navbar />
@@ -175,6 +217,11 @@ const Learn: React.FC = () => {
           >
             Send
           </Button>
+          <MicIcon
+            className="ml-4 mt-2 h-6 w-6 cursor-pointer rounded bg-white  text-black"
+            size={25}
+            onClick={() => handleListen()}
+          />
         </div>
       </div>
     </div>
