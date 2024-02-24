@@ -10,6 +10,22 @@ from flask import Flask
 from flask_cors import CORS
 from dotenv import load_dotenv
 import os
+import speech_recognition as sr
+import pyttsx3
+
+#initialize the recognizer
+
+r = sr.Recognizer()
+engine = pyttsx3.init('sapi5')
+engine.setProperty('voice', engine.getProperty('voices')[1].id)
+
+# ------------------Functions----------------------
+def reply(audio):
+    app.ChatBot.addAppMsg(audio)
+
+    print(audio)
+    engine.say(audio)
+    engine.runAndWait()
 
 load_dotenv()  # Load environment variables from .env file
 genai.configure(api_key=os.getenv('API_KEY')) 
@@ -99,8 +115,20 @@ def role_handler():  # Rename the function to avoid conflict
     full_response = ""
     for chunk in response:
         full_response += chunk.text
-
     return jsonify({"message": full_response})
+
+@app.route('/listen', methods=['POST'])
+def listen():
+    try:
+        data = request.get_json()
+        if 'message' in data:
+            voice_data = data['message'].lower()
+            return jsonify({"message": voice_data})
+        else:
+            return jsonify({"error": "Invalid data format. Make sure to provide 'message' in the JSON data."}), 400
+    except Exception as e:
+        return jsonify({"error": f"An error occurred during audio processing: {str(e)}"}), 500
+
 
 @app.route('/process', methods=['POST'])
 def process():

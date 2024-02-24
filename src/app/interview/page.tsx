@@ -20,6 +20,8 @@ const ChatComponent: React.FC = () => {
     const storedChatHistory = localStorage.getItem("chatHistory");
     return storedChatHistory ? JSON.parse(storedChatHistory) : [];
   });
+  const [voiceData, setVoiceData] = useState("");
+  const [error, setError] = useState("");
   const msgBoxRef = useRef<HTMLDivElement>(null);
 
   const handleSendMessage = async () => {
@@ -112,6 +114,46 @@ const ChatComponent: React.FC = () => {
       audio.play();
     }
   }, [audioUrl]);
+
+  // listen
+
+  const handleListen = async () => {
+    try {
+      const recognition = new window.webkitSpeechRecognition();
+      recognition.lang = "en-US";
+      recognition.start();
+
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        setVoiceData(transcript);
+        setInputMessage(transcript); // Set voice data to the input message
+        recognition.stop();
+
+        // Call handleSendMessage to send the voice data as a message
+        handleSendMessage();
+      };
+
+      recognition.onerror = (event) => {
+        setError(`Speech recognition error: ${event.error}`);
+        recognition.stop();
+      };
+    } catch (error) {
+      setError(`Error: ${error}`);
+    }
+    handleSubmit();
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.post("http://localhost:5000/listen", {
+        message: voiceData,
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.error(`Error submitting voice data: ${error}`);
+    }
+  };
+
   return (
     <div className="bg-black">
       <Navbar />
@@ -176,11 +218,11 @@ const ChatComponent: React.FC = () => {
           <Button className="ml-4" onClick={handleSendMessage}>
             Send
           </Button>
-          {/* <MicIcon
-            className="ml-4 text-white"
-            size={20}
-            onClick={() => traslate(inputMessage)}
-          /> */}
+          <MicIcon
+            className="ml-4 mt-2 h-6 w-6 cursor-pointer rounded bg-white  text-black"
+            size={25}
+            onClick={() => handleListen()}
+          />
         </div>
       </div>
     </div>
