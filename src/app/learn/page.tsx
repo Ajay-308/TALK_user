@@ -44,6 +44,7 @@ const Learn: React.FC = () => {
       );
 
       setInputMessage("");
+      speak(response.data.message);
     } catch (error) {
       console.error("Error sending message:", error);
     }
@@ -127,6 +128,7 @@ const Learn: React.FC = () => {
 
         // Call handleSendMessage to send the voice data as a message
         handleSendMessage();
+        handleSubmit();
       };
 
       recognition.onerror = (event) => {
@@ -136,7 +138,6 @@ const Learn: React.FC = () => {
     } catch (error) {
       setError(`Error: ${error}`);
     }
-    handleSubmit();
   };
 
   const handleSubmit = async () => {
@@ -153,7 +154,7 @@ const Learn: React.FC = () => {
   return (
     <div className="bg-black">
       <Navbar />
-      <div className="container-fluid bg-gradient text-dark flex min-h-screen flex-col items-center justify-center">
+      <div className="bg-gradient text-dark flex min-h-screen w-[140vh] flex-col place-content-center  items-center justify-center bg-black lg:w-[100vw] xl:w-[100vw]">
         <h1 className="text-warning -mt-24 mb-2 ml-2 mr-auto font-fantasy text-xl font-bold">
           learn english with AI
         </h1>
