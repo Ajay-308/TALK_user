@@ -4,6 +4,7 @@ import first from "../../assets/job-interview.gif";
 import second from "../../assets/resume.gif";
 import thrird from "../../assets/home.gif";
 import fourth from "../../assets/online-learning.gif";
+import Footer from "./footer";
 
 import { Button } from "@/components/ui/button";
 
@@ -68,7 +69,7 @@ export default async function NotesPage() {
                 className="m-1 h-[12rem] w-[12rem] rounded "
               />
             </div>
-            <div className="mt-4 text-center">Docs</div>
+            <div className="mt-4 text-center">How to use</div>
             <Button className="mt-12  bg-white text-black hover:bg-white">
               <Link href="/home">Get Started</Link>
               <ArrowRight className="w-h ml-2 h-4 w-6 ease-in-out hover:h-6" />
@@ -124,7 +125,12 @@ export default async function NotesPage() {
           </Card>
         </div>
       </section>
-      <section className="flex h-[20rem] w-[140vh] justify-center bg-black text-white lg:w-screen xl:w-screen"></section>
+      <section className="h-[10rem] w-screen bg-black" />
+      <section className=" h-[20rem] w-screen bg-black text-white">
+        <div className="">
+          <Footer />
+        </div>
+      </section>
     </>
   );
 }

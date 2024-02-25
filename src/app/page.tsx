@@ -66,7 +66,7 @@ export default function Home() {
                 className="h-[12rem] w-[12rem] rounded "
               />
             </div>
-            <div className="mt-4 text-center">hello</div>
+            <div className="mt-4 text-center">How to use</div>
             <Button className="mt-12  bg-white text-black hover:bg-white">
               <Link href="/home">Get Started</Link>
               <ArrowRight className="w-h ml-2 h-4 w-6 ease-in-out hover:h-6" />

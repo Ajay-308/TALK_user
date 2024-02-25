@@ -17,7 +17,7 @@ export default function Navbar() {
           </div>
           <div className="flex flex-grow justify-center">
             <Link href="/docs" className="mx-6 font-fantasy">
-              <span>Docs</span>
+              <span>how to use</span>
             </Link>
             <Link href="/contact" className="mx-6 font-fantasy">
               <span>Contact Us</span>

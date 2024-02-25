@@ -10,9 +10,11 @@ const ContactForm = () => {
     script.src = "https://static-bundles.visme.co/forms/vismeforms-embed.js";
     script.defer = true;
 
-    script.onload = () => {
+    const handleScriptLoad = () => {
       setIsLoading(false);
     };
+
+    script.onload = handleScriptLoad;
 
     document.body.appendChild(script);
 
@@ -35,12 +37,10 @@ const ContactForm = () => {
           data-title="Untitled Project"
           data-url="jwo841pg-untitled-project?fullPage=true"
           data-domain="forms"
-          //data-full-page="true"
-          // data-min-height="100vh"
           data-form-id="16940"
         >
           <h1 className="text-3xl font-bold text-white">
-            Please touch the screen once and Wait ...
+            Please touch the screen once and wait...
           </h1>
         </div>
         {isLoading && (
