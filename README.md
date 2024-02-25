@@ -57,13 +57,16 @@ guidelines:
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/your-username/your-repository.git
+   git clone https://github.com/Ajay-308/TALK_user.git
    
 2.Navigate to the project directory:
 
-    cd your-repository
+    cd Talk_user
 
 3. Install any necessary dependencies specified in the documentation.
+    ```bash
+    npm install
+    npm run dev --> for frontend
 4.Run the Backend in you local sytem:
 
    ```bash
