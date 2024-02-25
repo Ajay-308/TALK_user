@@ -192,11 +192,6 @@ const Learn: React.FC = () => {
                     <strong className="m-1">Jarwis</strong>
                   </div>
                   <h4 className="m-1 text-white">{msg.jarwis}</h4>
-                  <HiSpeakerWave
-                    className="m-1 font-bold text-white"
-                    size={20}
-                    onClick={() => speak(msg.jarwis)}
-                  />
                 </div>
               </div>
             </div>
