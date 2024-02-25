@@ -67,10 +67,9 @@ guidelines:
     ```bash
     npm install
 4.Run the Backend in you local sytem:
-
    ```bash
       cd model
-      python app.py
+      python api.py
 
 5.Run the frontend application:
     ```bash
