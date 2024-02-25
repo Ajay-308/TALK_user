@@ -72,7 +72,6 @@ guidelines:
       python api.py
 
 5.Run the frontend application:
-    ```bash
       npm run dev 
 
 
