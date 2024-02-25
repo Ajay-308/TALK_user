@@ -39,17 +39,36 @@ through interactive conversations:
    ```bash
    git clone https://github.com/your-username/your-repository.git
 2.Navigate to the project directory:
-
-   ```bash
-        cd your-repository
+     ```bash
+       cd your-repository
 
 3. Install any necessary dependencies specified in the documentation.
 4.Run the Backend in you local sytem:
 
- ```bash
+   ```bash
       cd model
       python app.py
+
 5.Run the frontend application:
-   ```bash
+    ```bash
       npm init
       npm run dev
+
+## Usage
+1. **Resume Score Calculation**:
+- Upload your resume.
+- Input a job description.
+- Receive a score indicating how well your resume matches the job requirements.
+2. **Interview Preparation with AI**:
+- Input a job description.
+- Engage in a mock interview with Jarvis.
+- Practice answering interview questions and receive feedback.
+3. **English Language Improvement**:
+- Interact with the chatbot in English.
+- Engage in conversations, receive corrections, and improve your English skills.
+## Contribution Guidelines
+Contributions to TALK USER are welcome! If you'd like to contribute, please follow these
+guidelines:
+- Fork the repository and create a new branch for your contributions.
+- Ensure your code follows the project's coding standards and guidelines.
+- Submit a pull request detailing the changes you've made and the problem they address.
