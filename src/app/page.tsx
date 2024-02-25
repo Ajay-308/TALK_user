@@ -123,7 +123,7 @@ export default function Home() {
         </div>
       </section>
       <section className="h-[10rem] w-screen bg-black" />
-      <section className=" h-[20rem] w-screen bg-black text-white">
+      <section className=" h-[10rem] w-screen bg-black text-white">
         <div className="">
           <Footer />
         </div>
