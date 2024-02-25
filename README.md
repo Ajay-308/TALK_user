@@ -31,3 +31,24 @@ through interactive conversations:
 - **Grammar Correction**: Identifies and corrects grammar errors in real-time.
 - **Vocabulary Enhancement**: Offers suggestions to improve vocabulary and phrasing.
 - **Personalized Guidance**: Provides tailored advice based on users' proficiency levels.
+
+## Getting Started
+- **To use TALK USER, follow these steps:
+1. Clone the repository to your local machine:
+
+   ```bash
+   git clone https://github.com/your-username/your-repository.git
+2.Navigate to the project directory:
+
+    ```bash
+     cd your-repository
+3. Install any necessary dependencies specified in the documentation.
+4.Run the Backend in you local sytem:
+
+   ```bash
+      cd models
+      python app.py
+5.Run the frontend application:
+   ```bash
+      npm init
+      npm run dev
