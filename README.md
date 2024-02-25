@@ -58,9 +58,10 @@ guidelines:
 
    ```bash
    git clone https://github.com/your-username/your-repository.git
+   
 2.Navigate to the project directory:
-    ```bash
-       cd your-repository
+
+    cd your-repository
 
 3. Install any necessary dependencies specified in the documentation.
 4.Run the Backend in you local sytem:
