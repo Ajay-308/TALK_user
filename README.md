@@ -73,7 +73,7 @@ guidelines:
       python app.py
 
 5.Run the frontend application:
-   ```bash
+    ```bash
       npm run dev 
 
 
