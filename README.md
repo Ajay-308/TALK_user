@@ -32,28 +32,6 @@ through interactive conversations:
 - **Vocabulary Enhancement**: Offers suggestions to improve vocabulary and phrasing.
 - **Personalized Guidance**: Provides tailored advice based on users' proficiency levels.
 
-## Getting Started
-- **To use TALK USER, follow these steps:
-1. Clone the repository to your local machine:
-
-   ```bash
-   git clone https://github.com/your-username/your-repository.git
-2.Navigate to the project directory:
-     ```bash
-       cd your-repository
-
-3. Install any necessary dependencies specified in the documentation.
-4.Run the Backend in you local sytem:
-
-   ```bash
-      cd model
-      python app.py
-
-5.Run the frontend application:
-    ```bash
-      npm init
-      npm run dev
-
 ## Usage
 1. **Resume Score Calculation**:
 - Upload your resume.
@@ -72,3 +50,28 @@ guidelines:
 - Fork the repository and create a new branch for your contributions.
 - Ensure your code follows the project's coding standards and guidelines.
 - Submit a pull request detailing the changes you've made and the problem they address.
+
+
+## Getting Started:
+- To use TALK USER, follow these steps:
+1. Clone the repository to your local machine:
+
+   ```bash
+   git clone https://github.com/your-username/your-repository.git
+2.Navigate to the project directory:
+    ```bash
+       cd your-repository
+
+3. Install any necessary dependencies specified in the documentation.
+4.Run the Backend in you local sytem:
+
+   ```bash
+      cd model
+      python app.py
+
+5.Run the frontend application:
+   ```bash
+      npm init
+      npm run dev 
+
+
