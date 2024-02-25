@@ -66,7 +66,6 @@ guidelines:
 3. Install any necessary dependencies specified in the documentation.
     ```bash
     npm install
-    npm run dev --> for frontend
 4.Run the Backend in you local sytem:
 
    ```bash
@@ -75,7 +74,6 @@ guidelines:
 
 5.Run the frontend application:
    ```bash
-      npm init
       npm run dev 
 
 
