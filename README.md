@@ -40,13 +40,14 @@ through interactive conversations:
    git clone https://github.com/your-username/your-repository.git
 2.Navigate to the project directory:
 
-    ```bash
-     cd your-repository
+   ```bash
+        cd your-repository
+
 3. Install any necessary dependencies specified in the documentation.
 4.Run the Backend in you local sytem:
 
-   ```bash
-      cd models
+ ```bash
+      cd model
       python app.py
 5.Run the frontend application:
    ```bash
