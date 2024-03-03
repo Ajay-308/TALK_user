@@ -25,9 +25,16 @@ jobs:
       - name: Build Next.js project
         run: npm run build
 
+      - name: Debug Git
+        run: |
+          git --version
+          git remote -v
+          git branch -a
+          git log -n 10
+        if: failure()
+
       - name: Deploy to GitHub Pages
         uses: jamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: gh-pages
           folder: .next  # Update this to the correct output folder
-
