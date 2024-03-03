@@ -11,22 +11,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: checkout
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: setup node
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 14  # Update this to the correct Node.js version
 
-      - name: install dependencies
+      - name: Install dependencies
         run: npm install
-        
-      - name: build
+
+      - name: Build Next.js project
         run: npm run build
 
-      - name: deploy to github
+      - name: Deploy to GitHub Pages
         uses: jamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: gh-pages
-          folder: build
+          folder: .next  # Update this to the correct output folder
+
