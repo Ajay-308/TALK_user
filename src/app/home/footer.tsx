@@ -1,7 +1,7 @@
 import React from "react";
 import { Instagram, GithubIcon, LinkedinIcon, MailIcon } from "lucide-react";
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
     <div className="bg-black p-4 text-white">
       <div className="flex items-center justify-center gap-8">

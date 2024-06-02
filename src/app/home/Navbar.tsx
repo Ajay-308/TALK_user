@@ -1,9 +1,11 @@
+import React from "react";
 import logo from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
 import { UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
-export default function Navbar() {
+
+const Navbar: React.FC = () => {
   return (
     <>
       <div className="w-[135vh] bg-black pt-2 text-xl text-white shadow lg:w-screen xl:w-screen">
@@ -17,7 +19,7 @@ export default function Navbar() {
           </div>
           <div className="flex flex-grow justify-center">
             <Link href="/docs" className="mx-6 font-fantasy">
-              <span>how to use</span>
+              <span>How to use</span>
             </Link>
             <Link href="/contact" className="mx-6 font-fantasy">
               <span>Contact Us</span>
@@ -38,7 +40,7 @@ export default function Navbar() {
             />
           </div>
           <div>
-            <Button className=" ml-12 bg-white text-black hover:scale-110 hover:bg-white">
+            <Button className="ml-12 bg-white text-black hover:scale-110 hover:bg-white">
               <Link href="/home">Get Started</Link>
             </Button>
           </div>
@@ -46,4 +48,6 @@ export default function Navbar() {
       </div>
     </>
   );
-}
+};
+
+export default Navbar;
