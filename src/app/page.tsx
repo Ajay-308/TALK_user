@@ -12,6 +12,7 @@ import { redirect } from "next/navigation";
 import Navbar from "./home/Navbar";
 import { Card } from "@/components/ui/card";
 import Footer from "./home/footer";
+import { PinContainer } from "@/components/ui/3d-pin";
 
 const Home: React.FC = () => {
   const { userId } = auth();
@@ -21,7 +22,7 @@ const Home: React.FC = () => {
   return (
     <div>
       <Navbar />
-      <section className="grid h-screen w-[140vh] place-content-center bg-black lg:w-screen xl:w-screen">
+      <section className="grid h-screen  place-content-center bg-black ">
         <div id="circle-shape">
           <div id="circle1"></div>
           <div id="circle2"></div>
@@ -54,59 +55,85 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
-      <section className="flex w-[140vh] place-content-center justify-center bg-black text-white lg:w-screen xl:w-screen">
+      <section className="flex place-content-center justify-center bg-black text-white ">
         <div className="mt-24 grid grid-cols-2 grid-rows-2 items-center justify-center gap-4 bg-black">
-          {/* Card 1 */}
-          <Card className="flex flex-col items-center border bg-black p-4 text-white lg:h-[24rem] lg:w-[20rem]">
-            <div className="flex items-center justify-center">
-              <Image src={third} alt="Home" className="h-[12rem] w-[12rem] rounded" />
+          <PinContainer
+            title="Docs"
+            href="https://github.com/Ajay-308/TALK_user"
+          >
+            <div className="flex h-[16rem] w-[20rem] basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 lg:h-[22rem] lg:w-[20rem] ">
+              <Image
+                src={second}
+                alt="interview"
+                className="ml-12 h-[12rem] w-[12rem] rounded"
+              />
+              <h3 className=" ml-24 mt-8 max-w-xs !pb-2 text-base  font-bold text-slate-100">
+                Docs
+              </h3>
+              <div className="mt-4 !p-0 text-base font-normal">
+                <span className="font-bold text-slate-500 ">
+                  Read the Document to know about more
+                </span>
+              </div>
             </div>
-            <div className="mt-4 text-center">How to use</div>
-            <Button className="mt-12 bg-white text-black hover:bg-white">
-              <Link href="/home">Get Started</Link>
-              <ArrowRight className="w-h ml-2 h-4 w-6 ease-in-out hover:h-6" />
-            </Button>
-          </Card>
+          </PinContainer>
 
-          {/* Card 2 */}
-          <Card className="flex flex-col items-center border bg-black p-4 text-white lg:h-[24rem] lg:w-[20rem]">
-            <div className="flex items-center justify-center">
-              <Image src={second} alt="Resume Tracker" className="h-[12rem] w-[12rem] rounded" />
+          <PinContainer title="Resume Tracker" href="/Resume">
+            <div className="flex h-[16rem] w-[20rem] basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 lg:h-[22rem] lg:w-[20rem] ">
+              <Image
+                src={fourth}
+                alt="interview"
+                className="ml-12 h-[12rem] w-[12rem] rounded"
+              />
+              <h3 className=" ml-24 mt-8 max-w-xs !pb-2 text-base  font-bold text-slate-100">
+                Resume Tracker
+              </h3>
+              <div className="mt-4 !p-0 text-base font-normal">
+                <span className="font-bold text-slate-500 ">
+                  Track your resume and find the best fit job
+                </span>
+              </div>
             </div>
-            <div className="mt-4 text-center">ResumeTracker</div>
-            <Button className="mt-12 bg-white text-black hover:bg-white">
-              <Link href="/role">Get Started</Link>
-              <ArrowRight className="w-h ml-2 h-4 w-6 ease-in-out hover:h-6" />
-            </Button>
-          </Card>
+          </PinContainer>
 
-          {/* Card 3 */}
-          <Card className="flex flex-col items-center border bg-black p-4 text-white lg:h-[24rem] lg:w-[20rem]">
-            <div className="flex items-center justify-center">
-              <Image src={first} alt="Interview" className="h-[12rem] w-[12rem] rounded" />
+          <PinContainer title="Interview" href="/interview">
+            <div className="flex h-[16rem] w-[20rem] basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 lg:h-[22rem] lg:w-[20rem] ">
+              <Image
+                src={third}
+                alt="interview"
+                className="ml-12 h-[12rem] w-[12rem] rounded"
+              />
+              <h3 className=" ml-24 mt-8 max-w-xs !pb-2 text-base  font-bold text-slate-100">
+                Interview
+              </h3>
+              <div className="mt-4 !p-0 text-base font-normal">
+                <span className="font-bold text-slate-500 ">
+                  Embrace your interview skills with us
+                </span>
+              </div>
             </div>
-            <div className="mt-4 text-center">Interview</div>
-            <Button className="mt-12 bg-white text-black hover:bg-white">
-              <Link href="/interview">Get Started</Link>
-              <ArrowRight className="w-h ml-2 h-4 w-6 ease-in-out hover:h-6" />
-            </Button>
-          </Card>
-
-          {/* Card 4 */}
-          <Card className="flex flex-col items-center border bg-black p-4 text-white lg:h-[24rem] lg:w-[20rem]">
-            <div className="flex items-center justify-center">
-              <Image src={fourth} alt="Online Learning" className="h-[12rem] w-[12rem] rounded" />
+          </PinContainer>
+          <PinContainer title="Learn" href="/learn">
+            <div className=" flex h-[16rem] w-[20rem] basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 lg:h-[22rem] lg:w-[20rem] ">
+              <Image
+                src={first}
+                alt="interview"
+                className="ml-12 h-[12rem] w-[12rem] rounded"
+              />
+              <h3 className=" ml-24 mt-8 max-w-xs !pb-2 text-base  font-bold text-slate-100">
+                Learn
+              </h3>
+              <div className="mt-4 !p-0 text-base font-normal">
+                <span className="font-bold text-slate-500 ">
+                  Learning is the key to success
+                </span>
+              </div>
             </div>
-            <div className="mt-4 text-center">Learn</div>
-            <Button className="mt-12 bg-white text-black hover:bg-white">
-              <Link href="/learn">Get Started</Link>
-              <ArrowRight className="w-h ml-2 h-4 w-6 ease-in-out hover:h-6" />
-            </Button>
-          </Card>
+          </PinContainer>
         </div>
       </section>
-      <section className="h-[10rem] w-screen bg-black" />
-      <section className="h-[10rem] w-screen bg-black text-white">
+      <section className="h-[10rem] bg-black" />
+      <section className="h-[10rem]  bg-black text-white">
         <Footer />
       </section>
     </div>

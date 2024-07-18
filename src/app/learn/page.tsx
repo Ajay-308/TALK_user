@@ -154,7 +154,7 @@ const Learn: React.FC = () => {
   return (
     <div className="bg-black">
       <Navbar />
-      <div className="bg-gradient text-dark flex min-h-screen w-[140vh] flex-col place-content-center  items-center justify-center bg-black lg:w-[100vw] xl:w-[100vw]">
+      <div className="bg-gradient text-dark flex min-h-screen flex-col place-content-center  items-center justify-center bg-black ">
         <h1 className="text-warning -mt-24 mb-2 ml-2 mr-auto font-fantasy text-xl font-bold">
           learn english with AI
         </h1>

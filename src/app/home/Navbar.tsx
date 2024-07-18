@@ -8,7 +8,7 @@ import Link from "next/link";
 const Navbar: React.FC = () => {
   return (
     <>
-      <div className="w-[135vh] bg-black pt-2 text-xl text-white shadow lg:w-screen xl:w-screen">
+      <div className=" bg-black pt-2 text-xl text-white shadow">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           {/* Logo and Talk User on the left */}
           <div className="flex items-center">
