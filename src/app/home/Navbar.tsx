@@ -18,11 +18,14 @@ const Navbar: React.FC = () => {
             </Link>
           </div>
           <div className="flex flex-grow justify-center">
-            <Link href="/docs" className="mx-6 font-fantasy">
-              <span>How to use</span>
+            <Link
+              href="https://github.com/Ajay-308/TALK_user"
+              className="mx-6 font-fantasy"
+            >
+              <span>Benefits</span>
             </Link>
             <Link href="/contact" className="mx-6 font-fantasy">
-              <span>Contact Us</span>
+              <span>Contact-Us</span>
             </Link>
           </div>
           {/* Toggle button and Get Started button on the right */}
