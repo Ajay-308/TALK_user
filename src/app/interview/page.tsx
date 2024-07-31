@@ -16,7 +16,7 @@ const ChatComponent: React.FC = () => {
   const [inputMessage, setInputMessage] = useState<string>("");
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const [chatHistory, setChatHistory] = useState<ChatMessage[]>(() => {
-    // local storage se history leke storedchathistory me daal lega
+    // local storage se history leke storedchathistory me daal dega
     const storedChatHistory = localStorage.getItem("chatHistory");
     return storedChatHistory ? JSON.parse(storedChatHistory) : [];
   });
